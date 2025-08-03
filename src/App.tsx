@@ -1,11 +1,8 @@
 import './App.css'
 import {useEffect, useState} from "react";
-
-
-type CountryData = {
-    name: string,
-    capital: string
-}
+import type {CountryData} from "./types.ts";
+import PlayerData from "./components/PlayerData.tsx";
+import {GeoGameProvider} from "./context/GeoGameContext.tsx";
 
 function App() {
 
@@ -86,18 +83,11 @@ function App() {
     }, []);
 
   return (
+      <GeoGameProvider>
       <div className="app">
       <div className="game-container">
           <h1>Welcome to Geo Game</h1>
-          <label htmlFor="player-name">What is your name?</label>
-          <input
-              id="player-name"
-              type="text"
-              placeholder="Name"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              className="text-input"
-          />
+          <PlayerData/>
 
           {!roundStarted && (
               <button className="primary-button" onClick={startRound}>
@@ -132,6 +122,7 @@ function App() {
           )}
       </div>
       </div>
+      </GeoGameProvider>
   )
 }
 
