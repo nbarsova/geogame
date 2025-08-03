@@ -1,0 +1,111 @@
+:root {
+  --text: #040607;
+  --background: #fbfdfd;
+  --primary: #5b9bbc;
+  --secondary: #9bc6dd;
+  --accent: #72b5d7;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game-container {
+  max-width: 500px;
+  min-width: 500px;
+  margin: 3rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  margin: 0.4rem 0.2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.primary-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.primary-button:hover {
+  background-color: #4985a3;
+}
+
+.secondary-button {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+.secondary-button:hover {
+  background-color: #85b8d2;
+}
+
+.accent-button {
+  background-color: var(--accent);
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.accent-button:hover {
+  background-color: #61a6c7;
+}
+
+.question-section {
+  margin-top: 1.5rem;
+}
+
+.result-message {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.score {
+  margin-top: 0.3rem;
+  color: var(--primary);
+}
+
+.final-message {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
