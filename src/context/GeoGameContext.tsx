@@ -1,7 +1,6 @@
-import {createContext, type Dispatch, useContext, useReducer} from 'react';
-import {ActionTypes, type GeoGameAction, type GeoGameState} from "../types.ts";
+import {type ActionDispatch, createContext, useReducer} from 'react';
 
-const initialState: GeoGameState = {
+const initialState: any = {
     playerName: '',
     playerStats: null,
     roundStarted: false,
@@ -9,49 +8,49 @@ const initialState: GeoGameState = {
     totalRounds: 0,
 };
 
-const gameReducer = (state: GeoGameState, action: GeoGameAction) => {
+const gameReducer = (state: any, action: any) => {
     switch (action.type) {
-        case ActionTypes.SET_PLAYER: {
-            const { name, stats } = action.payload;
-            return {
-                ...state,
-                playerName: name,
-                playerStats: stats,
-            };
-        }
-        case ActionTypes.START_ROUND:
-            return {
-                ...state,
-                roundStarted: true,
-                currentScore: 0,
-                totalRounds: action.payload.totalRounds || 0,
-            };
-        case ActionTypes.UPDATE_SCORE:
-            return {
-                ...state,
-                currentScore: state.currentScore + 1,
-            };
-        case ActionTypes.FINISH_ROUND: {
-            const { lastScore, highestScore } = action.payload;
-            return {
-                ...state,
-                roundStarted: false,
-                playerStats: {
-                    lastScore,
-                    highestScore,
-                },
-            };
-        }
-        case ActionTypes.RESET_GAME:
-            return initialState;
+        // case ActionTypes.SET_PLAYER: {
+        //     const { name, stats } = action.payload;
+        //     return {
+        //         ...state,
+        //         playerName: name,
+        //         playerStats: stats,
+        //     };
+        // }
+        // case ActionTypes.START_ROUND:
+        //     return {
+        //         ...state,
+        //         roundStarted: true,
+        //         currentScore: 0,
+        //         totalRounds: action.payload.totalRounds || 0,
+        //     };
+        // case ActionTypes.UPDATE_SCORE:
+        //     return {
+        //         ...state,
+        //         currentScore: state.currentScore + 1,
+        //     };
+        // case ActionTypes.FINISH_ROUND: {
+        //     const { lastScore, highestScore } = action.payload;
+        //     return {
+        //         ...state,
+        //         roundStarted: false,
+        //         playerStats: {
+        //             lastScore,
+        //             highestScore,
+        //         },
+        //     };
+        // }
+        // case ActionTypes.RESET_GAME:
+        //     return initialState;
         default:
             return state;
     }
 };
 
 
-const GeoGameStateContext = createContext<GeoGameState|undefined>(undefined);
-const GeoGameDispatchContext = createContext<Dispatch<GeoGameAction> | undefined>(undefined);
+const GeoGameStateContext = createContext(undefined);
+const GeoGameDispatchContext = createContext<ActionDispatch<any>| undefined>(undefined);
 
 
 export const GeoGameProvider = ({ children }: {children: any}) => {
@@ -66,19 +65,4 @@ export const GeoGameProvider = ({ children }: {children: any}) => {
     );
 };
 
-export const useGameState = (): GeoGameState => {
-    const context = useContext(GeoGameStateContext);
-    if (context === undefined) {
-        throw new Error('useGameState must be used within a GameProvider');
-    }
-    return context;
-};
-
-export const useGameDispatch = (): Dispatch<GeoGameAction> => {
-    const context = useContext(GeoGameDispatchContext);
-    if (context === undefined) {
-        throw new Error('useGameDispatch must be used within a GameProvider');
-    }
-    return context;
-};
 

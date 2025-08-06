@@ -5,7 +5,7 @@ import PlayerData from "./components/PlayerData.tsx";
 import {GeoGameProvider} from "./context/GeoGameContext.tsx";
 
 function App() {
-
+// @ts-ignore
     const [playerName, setPlayerName] = useState<string>('');
 
     const [allCountries, setAllCountries] = useState<Array<CountryData>>([]);
