@@ -40,7 +40,7 @@ function App() {
         setRoundStarted(false);
         setCurrentCountry(undefined);
         setResultMessage('');
-        setRoundFinalMessage('Congratulations, '+playerName+ '! You played a round with '+rounds+ ' countries, you guessed '+ Math.ceil(userPoints/rounds*100)+'% countries correctly');
+        setRoundFinalMessage('Congratulations! You played a round with '+rounds+ ' countries, you guessed '+ Math.ceil(userPoints/rounds*100)+'% countries correctly');
     }
 
     const getRandomCountry = () => {
@@ -75,7 +75,7 @@ function App() {
                     name: rawCountryData.name,
                         capital: rawCountryData.capital
                 }
-            });
+            }).filter((country: CountryData)=> country.capital !== '');
             setAllCountries(countriesArray);
         }
 
